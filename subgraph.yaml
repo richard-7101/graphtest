@@ -1,0 +1,47 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: PoolImplementation
+    network: arbitrum-one
+    source:
+      address: "0xDE3447Eb47EcDf9B5F90E7A6960a1466316CeE89"
+      abi: PoolImplementation
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - AddLiquidity
+        - AddMargin
+        - AddMarket
+        - CollectProtocolFee
+        - NewAdmin
+        - NewImplementation
+        - NewProtocolFeeCollector
+        - RemoveLiquidity
+        - RemoveMargin
+      abis:
+        - name: PoolImplementation
+          file: ./abis/PoolImplementation.json
+      eventHandlers:
+        - event: AddLiquidity(indexed uint256,indexed address,uint256,int256)
+          handler: handleAddLiquidity
+        - event: AddMargin(indexed uint256,indexed address,uint256,int256)
+          handler: handleAddMargin
+        - event: AddMarket(indexed address)
+          handler: handleAddMarket
+        - event: CollectProtocolFee(indexed address,uint256)
+          handler: handleCollectProtocolFee
+        - event: NewAdmin(indexed address)
+          handler: handleNewAdmin
+        - event: NewImplementation(address)
+          handler: handleNewImplementation
+        - event: NewProtocolFeeCollector(address)
+          handler: handleNewProtocolFeeCollector
+        - event: RemoveLiquidity(indexed uint256,indexed address,uint256,int256)
+          handler: handleRemoveLiquidity
+        - event: RemoveMargin(indexed uint256,indexed address,uint256,int256)
+          handler: handleRemoveMargin
+      file: ./src/pool-implementation.ts
