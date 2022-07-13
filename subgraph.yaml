@@ -6,8 +6,9 @@ dataSources:
     name: PoolImplementation
     network: arbitrum-one
     source:
-      address: "0xDE3447Eb47EcDf9B5F90E7A6960a1466316CeE89"
+      address: "0xDE3447Eb47EcDf9B5F90E7A6960a14663916CeE8"
       abi: PoolImplementation
+      startBlock: 11116070
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
